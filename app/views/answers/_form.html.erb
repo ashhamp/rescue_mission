@@ -1,0 +1,10 @@
+<%= form_for(@answer) do |f| %>
+  <div class="row">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Answer' %>
+  </div>
+<% end %>
