@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
        redirect_to @question
       flash[:notice] = "Question created!"
     else
-      flash.now[:error] = "Form is not correctly filled out."
+      flash.now[:error] = @question.errors.full_messages.join(", ")
       render :new
     end
   end

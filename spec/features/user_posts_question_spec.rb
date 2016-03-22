@@ -9,7 +9,8 @@ feature "posting questions" do
 
     click_on("Create Question")
 
-    expect(page).to have_content("Form is not correctly filled out.")
+    expect(page).to have_content("Title is too short (minimum is 40 characters)")
+    expect(page).to have_content("Description is too short (minimum is 150 characters)")
     expect(page).to_not have_content("Is this the proper way to test for a specific order in Capybara?  Or is the 'should' syntax an old version.")
 
   end
