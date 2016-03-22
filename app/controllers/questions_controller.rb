@@ -19,8 +19,24 @@ class QuestionsController < ApplicationController
        redirect_to @question
       flash[:notice] = "Question created!"
     else
-      flash.now[:error] = @question.errors.full_messages.join(", ")
-      render :new
+      flash[:error] = @question.errors.full_messages.join(", ")
+      redirect_to new_question_path
+    end
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    @question.update_attributes(question_params)
+
+    if @question.save
+      redirect_to @question
+    else
+      flash[:error] = @question.errors.full_messages.join(", ")
+      redirect_to edit_question_path(@question)
     end
   end
 
