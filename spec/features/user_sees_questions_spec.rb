@@ -7,10 +7,11 @@ feature "sees questions" do
     another_question = Question.create!(title: "Adding Rspec to Rails app. Is this one long enough? I hope so. I hope so. Will this do it?", description: "Is this how you write tests for Rspec in rails? Is this at least 140 characters long?  I don't know.  I don't know.  Is it yet? Is it yet? Is this long enough yet? Is this long enough yet?")
 
     visit questions_path
-  
+
     expect(page).to have_content(question.title)
     expect(page).to have_content(another_question.title)
-    expect(another_question.title < question.title)
+    expect(page).to have_selector("tbody#questions td:nth-child(1)", text: "#{another_question.title}")
+    expect(page).to have_selector("tbody#questions td:last-child", text: "#{question.title}")
 
   end
 end
