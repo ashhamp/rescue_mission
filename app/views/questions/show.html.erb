@@ -6,7 +6,7 @@
   <%= markdown(@question.description) %>
 </p>
 
-<%= button_to "Edit Question", edit_question_path(@question) %>
+<%= button_to "Edit Question", edit_question_path(@question), method: :get %>
 <%= button_to "Delete Question", @question, method: :delete %>
 
 <br>
