@@ -16,11 +16,11 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-       redirect_to @question
       flash[:notice] = "Question created!"
+      redirect_to @question
     else
-      flash[:error] = @question.errors.full_messages.join(", ")
-      redirect_to new_question_path
+      flash.now[:error] = @question.errors.full_messages.join(", ")
+      render :new
     end
   end
 
