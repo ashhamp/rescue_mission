@@ -8,10 +8,8 @@ feature "answers questions" do
     answer = "You have to run rails new <your-app-name> in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use"
 
     visit question_path("#{question.id}")
-
-    click_on "Answer"
     fill_in("Description", with: answer)
-    click_on("Answer")
+    click_on("Submit Answer")
     expect(page).to have_content(answer)
   end
 
@@ -21,10 +19,8 @@ feature "answers questions" do
     answer = "This answer is not long enough."
 
     visit question_path("#{question.id}")
-
-    click_on "Answer"
     fill_in("Description", with: answer)
-    click_on("Answer")
+    click_on("Submit Answer")
     expect(page).to have_content("Description is too short (minimum is 50 characters)")
   end
 end
