@@ -10,9 +10,8 @@ feature "question's answers" do
     answer = "You have to run rails new <your-app-name> in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use"
 
     visit question_path("#{question.id}")
-    click_on "Add Answer"
     fill_in("Description", with: answer)
-    click_on "Answer"
+    click_on "Submit Answer"
 
     expect(page).to have_content(answer)
     expect(page).to have_selector("ul#answers li:nth-child(2)", text: "You have to run rails new")
