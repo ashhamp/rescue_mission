@@ -45,6 +45,8 @@ end
 
 gem 'foundation-rails'
 
+gem 'redcarpet'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
