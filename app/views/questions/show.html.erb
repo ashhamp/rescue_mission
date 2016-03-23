@@ -1,17 +1,17 @@
 
-
-<h3><%= @question.title %></h3>
-
+<h3>Question:</h3>
+<p><%= markdown(@question.title) %></p>
+<h3>Description:</h3>
 <p>
-  <%= @question.description %>
+  <%= markdown(@question.description) %>
 </p>
 
-<%= link_to "Edit Question", edit_question_path(@question) %>
-<%= link_to "Delete Question", @question, method: :delete %>
+<%= button_to "Edit Question", edit_question_path(@question) %>
+<%= button_to "Delete Question", @question, method: :delete %>
 
 <br>
 
-<h3>New Answer%></h3>
+<h3>Add Answer</h3>
 
 <%= form_for [@question, @answer] do |f| %>
   <div class="row">
@@ -31,11 +31,11 @@
   <div>
     <ul id="answers">
       <% @question.answers.each do |answer| %>
-      <li><%= answer.description %></li>
+      <li><%= markdown(answer.description) %></li>
       <% end %> <br />
     </ul>
   </div>
   <br>
   <% end %>
 
-<%= link_to 'Back', questions_path %>
+<%= button_to 'Back', questions_path %>
