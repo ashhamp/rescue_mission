@@ -4,14 +4,8 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
     @answer.question = @question
-    @all_answers = @question.answers
-    @best_answer = @all_answers.where(best: true)
-
-    if @best_answer
-      @answers = @all_answers - @best_answer
-    else
-      @answers = @all_answers
-    end
+    @answers = @question.answers.order(best: :desc, created_at: :asc)
+    @best_answer = @answers.where(best: true).first
 
     if @answer.save
       flash[:notice] = "Answer saved successfully."
@@ -24,7 +18,12 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
+    @question = @answer.question
+    @all_answers = @question.answers
+    @all_answers.update_all(best: false)
     @answer.update_attributes(best: true)
+
+
     redirect_to question_path(@answer.question)
   end
 

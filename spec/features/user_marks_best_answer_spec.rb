@@ -17,7 +17,7 @@ feature "best answer" do
     expect(page).to have_content(answer1.description)
     expect(page).to have_content(answer2.description)
 
-    expect(page).to have_selector("ul.answers li:first-child", text: answer2.description)
-    expect(page).to have_selector("ul.answers li:last-child", text: answer1.description)
+    expect(answer2.description).to appear_before(answer1.description)
+
   end
 end

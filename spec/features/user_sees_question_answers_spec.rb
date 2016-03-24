@@ -7,7 +7,7 @@ feature "question's answers" do
 
     original_answer = Answer.create!(description: "I am a little teapot. Short and stout. Here is my handle, here is my spout.  Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.", question: question)
 
-    answer = "You have to run rails new 'your app name' in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use"
+    answer = "You have to run rails new your app name in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use"
 
     visit question_path("#{question.id}")
     fill_in("Description", with: answer)
@@ -15,7 +15,7 @@ feature "question's answers" do
 
     expect(page).to have_text(answer)
 
-    expect(page).to have_selector("ul#answers li:nth-child(2)", text: "You have to run rails new")
-    expect(page).to have_selector("ul#answers li:nth-child(1)", text: "I am a little teapot.")
+    expect(original_answer.description).to appear_before(answer)
+
   end
 end
