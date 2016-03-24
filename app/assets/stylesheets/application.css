@@ -22,3 +22,7 @@
 #answer-callout {
   color: green;
 }
+
+li {
+  list-style: none;
+}
