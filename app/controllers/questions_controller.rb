@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  
   def index
     @questions = Question.order(created_at: :desc)
   end
@@ -6,6 +7,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
+    @answers = @question.answers.order(best: :desc, created_at: :asc)
+    @best_answer = @answers.where(best: true).first
   end
 
   def new
