@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  helper_method :best_answer?
+
   def index
     @questions = Question.order(created_at: :desc)
   end
@@ -6,6 +8,14 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
+    @all_answers = @question.answers
+    @best_answer = @all_answers.where(best: true)
+
+    if @best_answer
+      @answers = @all_answers - @best_answer
+    else
+      @answers = @all_answers
+    end
   end
 
   def new
@@ -49,6 +59,14 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def best_answer?
+    if @all_answers.where(best: true).nil?
+      return false
+    else
+      return true
+    end
+  end
 
   def question_params
     params.require(:question).permit(:title, :description)

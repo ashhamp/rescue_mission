@@ -28,14 +28,31 @@
 
 <h4>Answers:</h4>
 <% unless @question.answers.nil? %>
-  <div>
-    <ul id="answers">
-      <% @question.answers.each do |answer| %>
-      <li><%= markdown(answer.description) %></li>
-      <% end %> <br />
-    </ul>
-  </div>
-  <br>
+  <% if !@best_answer.empty? %>
+    <div class="best_answer">
+      <li id="answer-callout">Best Answer!</li>
+      <li><%= markdown(@best_answer.first.description) %></li>
+    </div>
+
+    <div>
+      <ul class="answers">
+        <% @answers.each do |answer| %>
+        <li><%= markdown(answer.description) %></li>
+        <% end %> <br />
+      </ul>
+    </div>
+    <br>
+  <% else %>
+
+    <div>
+      <ul class="answers">
+        <% @answers.each do |answer| %>
+        <li><%= markdown(answer.description) %><%= button_to 'Best Answer!', answer, method: :patch %></li>
+        <% end %> <br />
+      </ul>
+    </div>
+    <br>
+    <% end %>
   <% end %>
 
 <%= button_to 'Back', questions_path %>

@@ -7,15 +7,17 @@ feature "best answer" do
 
     answer1 = Answer.create!(description: "I am a little teapot. Short and stout. Here is my handle, here is my spout.  Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.", question: question)
 
-     answer2 = Answer.create!(description: "You have to run rails new <your-app-name> in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use", question: question)
+   answer2 = Answer.create!(description: "You have to run rails new yourappname in the command line.  Be wary of the scaffolding as it will create a lot of unnessary files that you do not need to use", question: question)
 
     visit question_path("#{question.id}")
-    within('#answers li:nth-child(2)') do
-      click_on "Best Answer!"
+    within('.answers li:nth-child(2)') do
+      click_button "Best Answer!"
     end
 
-    expect(page).to have_content(answer)
-    expect(page).to have_selector("ul#answers li:nth-child(1)", text: "You have to run rails new")
-    expect(page).to have_selector("ul#answers li:nth-child(2)", text: "I am a little teapot.")
+    expect(page).to have_content(answer1.description)
+    expect(page).to have_content(answer2.description)
+
+    expect(page).to have_selector("ul.answers li:first-child", text: answer2.description)
+    expect(page).to have_selector("ul.answers li:last-child", text: answer1.description)
   end
 end

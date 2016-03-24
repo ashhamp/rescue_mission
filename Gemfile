@@ -47,6 +47,8 @@ gem 'foundation-rails'
 
 gem 'redcarpet'
 
+gem 'faker'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'

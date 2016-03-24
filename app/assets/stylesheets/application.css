@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.best_answer {
+  border: solid;
+  border-color: green;
+}
+
+#answer-callout {
+  color: green;
+}
