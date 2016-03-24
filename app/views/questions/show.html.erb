@@ -11,11 +11,14 @@
 
 <br>
 
+<%= render 'questions/flash' %>
+
+<br>
+
 <h3>Add Answer</h3>
 
 <%= form_for [@question, @answer] do |f| %>
   <div class="row">
-    <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
 
