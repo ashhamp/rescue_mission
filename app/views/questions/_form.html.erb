@@ -1,15 +1,27 @@
 <%= form_for(@question) do |f| %>
   <div class="row">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <div class="medium-6 medium-centered columns">
+      <div class="input-group">
+        <span class="input-group-label"><%= f.label :title %></span>
+          <%= f.text_field :title, class: "input-group-field" %>
+      </div>
+    </div>
   </div>
 
   <div class="row">
-    <%= f.label :description %><br />
-    <%= f.text_field :description%>
+    <div class="medium-6 medium-centered columns">
+      <div class="input-group big-description">
+        <span class="input-group-label"><%= f.label :description %></span>
+          <%= f.text_area :description, class: "input-group-field big-description"%>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="medium-6 medium-centered columns">
+      <div class="action">
+        <%= f.submit "Submit", class: "button button-width orange" %>
+      </div>
+    </div>
   </div>
 <% end %>
