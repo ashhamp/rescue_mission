@@ -8,10 +8,10 @@ class AnswersController < ApplicationController
     @best_answer = @answers.where(best: true).first
 
     if @answer.save
-      flash[:notice] = "Answer saved successfully."
+      flash[:notice] = "Answer saved successfully"
       redirect_to question_path(@question)
     else
-      flash.now[:error] = @answer.errors.full_messages.join(", ")
+      flash.now[:error] = "Answer must be at least 50 characters"
       render "questions/show"
     end
   end

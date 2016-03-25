@@ -1,22 +1,12 @@
-<h1>Questions</h1>
+<p class="page-header">Questions</p>
+<%= render 'flash' %>
 
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody id="questions">
-      <% @questions.each do |question| %>
-        <tr>
-          <td><%= link_to markdown(question.title), question_path(question) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
+  <ul class="no-margin">
+    <% @questions.each do |question| %>
+      <li><%= link_to markdown(question.title), question_path(question) %></li>
+    <% end %>
+  </ul>
+<br>
 
 
 <%= link_to "Add Question", new_question_path %>
