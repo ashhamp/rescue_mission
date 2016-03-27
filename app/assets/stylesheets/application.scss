@@ -18,15 +18,16 @@
 
 .best_answer {
   border: solid;
-  border-color: green;
+  border-color: #609f9f;
 }
 
 #answer-callout {
-  color: green;
+  color: #609f9f;
 }
 
 li {
   list-style: none;
+  padding: 10px;
 }
 
 .input-group-label, .button-width {
@@ -54,6 +55,7 @@ a {
 }
 
 .page-header {
+  font-size: 30px;
 
 }
 
@@ -61,4 +63,11 @@ a {
   font-family: 'Megrim', cursive;
   font-size: 3em;
   font-weight: bold;
+}
+
+.best-answer {
+  background-color: white;
+  border: solid;
+  border-color: #9fc6c6;
+  color: #9fc6c6;
 }
