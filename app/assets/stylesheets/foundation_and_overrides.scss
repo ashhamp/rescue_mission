@@ -45,6 +45,13 @@
 @include foundation-tooltip;
 @include foundation-top-bar;
 
+.button {
+  border: solid;
+  border-color: inherit;
+  background-color: none;
+}
+
+
 // If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
 //
 // @include motion-ui-transitions;

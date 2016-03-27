@@ -4,6 +4,6 @@
 
 <%= render 'form' %>
 
-<%= link_to "Delete Question", question_path(@question), method: :delete %>
+<%= link_to "Delete Question", question_path(@question), method: :delete, class: :button %>
 
-<%= link_to 'Back', question_path %>
+<%= link_to 'Back', question_path, class: :button %>
